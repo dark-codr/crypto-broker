@@ -501,11 +501,11 @@ CRONJOBS = [
     ('* 1 30 */3 *', 'pengcrest.users.cron.can_reinvest'), # every 3 months
     ('* 1 30 */3 *', 'pengcrest.users.cron.can_withdraw'), # every 3 Months
     ('* * 1,15 * *', 'pengcrest.users.cron.can_withdraw_roi'), # every 2 weeks
-    ('0 4 1,15 * *', 'django.core.management.call_command', ['clearsessions']), #clear seeions every 4 oclock
+    ('0 4 1,15 * *', 'django.core.management.call_command', ['clearsessions']), #clear seeions every 4 o'clock
     ('@daily', 'pengcrest.mode.cron.get_crypto_prices'), #every 12:00 and 24:00
 ]
 CRONTAB_LOCK_JOBS = False
-CRONTAB_EXECUTABLE = '/usr/bin/crontab'
-CRONTAB_COMMAND_SUFFIX = '2>&1'
+# CRONTAB_EXECUTABLE = '/usr/bin/crontab'
+# CRONTAB_COMMAND_SUFFIX = '2>&1'
 
 API = env('CRYPTO_API')

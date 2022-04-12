@@ -92,10 +92,10 @@ def context_settings(request):
         # themedate_joined
         'dark': dark_mode,
         'faqs': faqs,
-        'btcprice': btcprice if btcprice.exists() else 0.00,
-        'ethprice': ethprice if ethprice.exists() else 0.00,
-        'ltcprice': ltcprice if ltcprice.exists() else 0.00,
-        'dashprice': dashprice if dashprice.exists() else 0.00,
+        'btcprice': btcprice if btcprice else 0.00,
+        'ethprice': ethprice if ethprice else 0.00,
+        'ltcprice': ltcprice if ltcprice else 0.00,
+        'dashprice': dashprice if dashprice else 0.00,
 
         'site': SimpleLazyObject(lambda: get_current_site(request)) if not settings.DEBUG else "localhost:8000",
     }
