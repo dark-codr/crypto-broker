@@ -45,14 +45,30 @@ def get_crypto_prices():
 
     try:
         Currency.objects.filter(name="btc").update(amount=btcusd)
-        Currency.objects.filter(name="eth").update(amount=ethusd)
-        Currency.objects.filter(name="ltc").update(amount=ltcusd)
-        Currency.objects.filter(name="dash").update(amount=dashusd)
+        LOGGER.info("BTC Updated")
     except Currency.DoesNotExist:
         Currency.objects.get_or_create(name="btc", amount=btcusd)
-        Currency.objects.get_or_create(name="eth", amount=ethusd)
-        Currency.objects.get_or_create(name="ltc", amount=ltcusd)
-        Currency.objects.get_or_create(name="dash", amount=dashusd)
+        LOGGER.info("BTC Created")
 
+    try:
+        Currency.objects.filter(name="eth").update(amount=ethusd)
+        LOGGER.info("ETH Updated")
+    except Currency.DoesNotExist:
+        Currency.objects.get_or_create(name="eth", amount=ethusd)
+        LOGGER.info("ETH Created")
+
+    try:
+        Currency.objects.filter(name="ltc").update(amount=ltcusd)
+        LOGGER.info("LTC Updated")
+    except Currency.DoesNotExist:
+        Currency.objects.get_or_create(name="ltc", amount=ltcusd)
+        LOGGER.info("LTC Created")
+
+    try:
+        Currency.objects.filter(name="dash").update(amount=dashusd)
+        LOGGER.info("DASH Updated")
+    except Currency.DoesNotExist:
+        Currency.objects.get_or_create(name="dash", amount=dashusd)
+        LOGGER.info("DASH Created")
 
 

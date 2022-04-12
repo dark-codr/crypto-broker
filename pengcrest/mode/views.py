@@ -80,10 +80,10 @@ def exhrate(request):
 
 
     context = {
-        "btcusd": 100 / btcusd.amount if btcusd.exists() else 0.00,
-        "ethusd": 100 / ethusd.amount if ethusd.exists() else 0.00,
-        "ltcusd": 100 / ltcusd.amount if ltcusd.exists() else 0.00,
-        "dashusd": 100 / dashusd.amount if dashusd.exists() else 0.00,
+        "btcusd": 100 / btcusd.amount if btcusd.amount.exists() else 0.00,
+        "ethusd": 100 / ethusd.amount if ethusd.amount.exists() else 0.00,
+        "ltcusd": 100 / ltcusd.amount if ltcusd.amount.exists() else 0.00,
+        "dashusd": 100 / dashusd.amount if dashusd.amount.exists() else 0.00,
     }
 
     if request.htmx:
