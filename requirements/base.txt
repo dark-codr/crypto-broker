@@ -47,7 +47,7 @@ django-social-share==2.2.1
 
 
 # Location picker with maximindb
-geoip2==4.5.0
+# geoip2==4.5.0
 django-user-agents==0.4.0
 ua-parser==0.10.0
 user-agents==2.2.0
