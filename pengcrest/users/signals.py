@@ -30,7 +30,7 @@ User = get_user_model()
 @receiver(post_save, sender=User)
 def user_post_save_signal(created, instance, *args, **kwargs):
     if created:
-        Wallet.objects.create(user=instance)
+        Wallet.objects.get_or_create(user=instance)
         if not instance.unique_id:
             instance.unique_id = unique_id_generator(instance)
             LOGGER.info(f"Created New ID: {instance.unique_id}")

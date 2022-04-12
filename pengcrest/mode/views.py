@@ -80,11 +80,12 @@ def exhrate(request):
 
 
     context = {
-        "btcusd": 100 / btcusd.amount if btcusd.exists() else 0.00,
-        "ethusd": 100 / ethusd.amount if ethusd.exists() else 0.00,
-        "ltcusd": 100 / ltcusd.amount if ltcusd.exists() else 0.00,
-        "dashusd": 100 / dashusd.amount if dashusd.exists() else 0.00,
+        "btcusd": 100 / btcusd.amount,
+        "ethusd": 100 / ethusd.amount,
+        "ltcusd": 100 / ltcusd.amount,
+        "dashusd": 100 / dashusd.amount,
     }
+
 
     if request.htmx:
         return render(request, "snippets/crypto_price.html", context)
