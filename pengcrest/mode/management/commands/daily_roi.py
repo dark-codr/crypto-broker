@@ -28,7 +28,8 @@ class Command(BaseCommand):
 
     def handle(self):
         for u in users:
-            if u.wallet.invested_date:
+            three_months = u.wallet.invested_date + datetime.timedelta(weeks=12)
+            if u.wallet.invested_date and u.wallet.invested_date <= three_months :
                 # td = u.wallet.invested_date + datetime.timedelta(days=90)
                 asset = u.wallet.total_asset #Deposit.objects.filter(user=u, status=Deposit.SUCCESS).aggregate(Sum('amount'))
                 LOGGER.info(asset)

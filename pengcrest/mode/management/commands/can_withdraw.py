@@ -28,7 +28,8 @@ class Command(BaseCommand):
 
     def handle(self):
         for u in users:
-            if u.wallet.invested_date:
+            three_months = u.wallet.invested_date + datetime.timedelta(weeks=12)
+            if u.wallet.invested_date and datetime.date.today() > three_months:
                 u.can_withdraw = True
                 u.save()
 

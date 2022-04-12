@@ -28,7 +28,10 @@ class Command(BaseCommand):
 
     def handle(self):
         for u in users:
-            if u.wallet.invested_date:
+            one_months = u.wallet.invested_date + datetime.timedelta(weeks=4)
+            two_months = u.wallet.invested_date + datetime.timedelta(weeks=8)
+            three_months = u.wallet.invested_date + datetime.timedelta(weeks=12)
+            if u.wallet.invested_date and datetime.date.today() > (one_months or two_months) < three_months:
                 u.has_toped = False
                 u.save()
 

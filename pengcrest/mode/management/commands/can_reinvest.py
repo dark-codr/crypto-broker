@@ -1,5 +1,5 @@
 import json
-from datetime import timezone
+from datetime import timedelta, timezone
 from decimal import Decimal
 import datetime
 
@@ -28,7 +28,8 @@ class Command(BaseCommand):
 
     def handle(self):
         for u in users:
-            if u.wallet.invested_date:
+            three_months = u.wallet.invested_date + timedelta(weeks=12)
+            if u.wallet.invested_date and datetime.date.today() > three_months:
                 u.has_invested = False
                 u.save()
 

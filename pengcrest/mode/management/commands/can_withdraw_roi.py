@@ -28,7 +28,13 @@ class Command(BaseCommand):
 
     def handle(self):
         for u in users:
-            if u.wallet.invested_date:
+            three_months = u.wallet.invested_date + datetime.timedelta(weeks=12)
+            first_week = u.wallet.invested_date + datetime.timedelta(weeks=2)
+            second_week = u.wallet.invested_date + datetime.timedelta(weeks=4)
+            if u.wallet.invested_date and u.has_invested and not u.can_withdraw and datetime.date.today() > first_week < three_months:
+                u.can_withdraw_roi = True
+                u.save()
+            elif u.wallet.invested_date and u.has_invested and not u.can_withdraw and datetime.date.today() > second_week < three_months:
                 u.can_withdraw_roi = True
                 u.save()
 
