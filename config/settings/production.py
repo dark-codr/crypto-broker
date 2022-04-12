@@ -14,14 +14,14 @@ except ImproperlyConfigured:
 try:
     ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(',')
 except ImproperlyConfigured:
-    ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["radiofunk.io", "www.radiofunk.io", "radiofunk.apps.autobuyfast.com", "0.0.0.0", "*"])
+    ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["pengcrest.com", "www.pengcrest.com", "0.0.0.0", "*"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
 DATABASES["default"] = env.db("DATABASE_URL")  # noqa F405
 DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
 DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
-DATABASES["default"]["ENGINE"] = 'django.contrib.gis.db.backends.postgis'
+# DATABASES["default"]["ENGINE"] = 'django.contrib.gis.db.backends.postgis'
 
 # CACHES
 # ------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = env(
     "DJANGO_EMAIL_SUBJECT_PREFIX",
-    default="[pengcrest]",
+    default="[- Pengcrest]",
 )
 
 # ADMIN
@@ -205,5 +205,5 @@ LOGGING = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
-GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
+# GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+# GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
