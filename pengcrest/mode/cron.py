@@ -49,10 +49,10 @@ def get_crypto_prices():
         Currency.objects.filter(name="ltc").update(amount=ltcusd)
         Currency.objects.filter(name="dash").update(amount=dashusd)
     except Currency.DoesNotExist:
-        Currency.objects.create(name="btc", amount=btcusd)
-        Currency.objects.create(name="eth", amount=ethusd)
-        Currency.objects.create(name="ltc", amount=ltcusd)
-        Currency.objects.create(name="dash", amount=dashusd)
+        Currency.objects.get_or_create(name="btc", amount=btcusd)
+        Currency.objects.get_or_create(name="eth", amount=ethusd)
+        Currency.objects.get_or_create(name="ltc", amount=ltcusd)
+        Currency.objects.get_or_create(name="dash", amount=dashusd)
 
 
 
