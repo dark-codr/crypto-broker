@@ -13,7 +13,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
 from filebrowser.sites import site as filebrowser
 
-from pengcrest.mode.views import enable_dark_mode, enable_light_mode, exhrate, home
+from pengcrest.mode.views import exhrate, home #enable_dark_mode, enable_light_mode,
 
 from config.sitemaps import StaticViewSitemap
 from pengcrest.users.views import check_username, check_email
@@ -26,8 +26,8 @@ sitemaps = {
 
 urlpatterns = [
     # dark mode and light mode urls
-    path("dark_mode/", view=enable_dark_mode, name="mode"),
-    path("light_mode/", view=enable_light_mode, name="lmode"),
+    # path("dark_mode/", view=enable_dark_mode, name="mode"),
+    # path("light_mode/", view=enable_light_mode, name="lmode"),
     # path("exchange/", view=exhrate, name="exchange"),
 
     path("accounts/signup/check-username/", view=check_username, name='check-username'),
