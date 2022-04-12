@@ -73,10 +73,11 @@ User = get_user_model()
 
 
 def exhrate(request):
-    btcusd = Currency.objects.filter(name="btc")[0]
-    ethusd = Currency.objects.filter(name="eth")[0]
-    ltcusd = Currency.objects.filter(name="ltc")[0]
-    dashusd = Currency.objects.filter(name="dash")[0]
+    btcusd = Currency.objects.filter(name="btc")
+    ethusd = Currency.objects.filter(name="eth")
+    ltcusd = Currency.objects.filter(name="ltc")
+    dashusd = Currency.objects.filter(name="dash")
+
 
     context = {
         "btcusd": 100 / btcusd.amount,
