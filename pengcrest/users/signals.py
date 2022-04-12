@@ -21,11 +21,11 @@ from .models import Wallet, QuickFund, TransactionHistory, Withdraw, Deposit
 User = get_user_model()
 
 
-# @receiver(pre_save, sender=User)
-# def generate_unique_id(instance, *args, **kwargs):
-#     if not instance.unique_id:
-#         instance.unique_id = unique_id_generator(instance)
-#         LOGGER.info(f"Created New ID: {instance.unique_id}")
+@receiver(pre_save, sender=User)
+def generate_unique_id(instance, *args, **kwargs):
+    if not instance.unique_id:
+        instance.unique_id = unique_id_generator(instance)
+        LOGGER.info(f"Created New ID: {instance.unique_id}")
 
 @receiver(post_save, sender=User)
 def user_post_save_signal(created, instance, *args, **kwargs):
