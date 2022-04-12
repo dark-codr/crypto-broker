@@ -61,10 +61,10 @@ def context_settings(request):
 
     faqs = FAQ.objects.all()
 
-    btcprice = Currency.objects.get(name="btc")
-    ethprice = Currency.objects.get(name="eth")
-    ltcprice = Currency.objects.get(name="ltc")
-    dashprice = Currency.objects.get(name="dash")
+    btcprice = Currency.objects.get_or_create(name="btc")
+    ethprice = Currency.objects.get_or_create(name="eth")
+    ltcprice = Currency.objects.get_or_create(name="ltc")
+    dashprice = Currency.objects.get_or_create(name="dash")
 
     privacy = Privacy.objects.all().first() if Privacy.objects.all().exists() else None
     returns = Return.objects.all().first() if Return.objects.all().exists() else None
