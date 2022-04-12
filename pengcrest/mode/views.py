@@ -73,10 +73,10 @@ User = get_user_model()
 
 
 def exhrate(request):
-    btcusd = Currency.objects.filter(name="btc")
-    ethusd = Currency.objects.filter(name="eth")
-    ltcusd = Currency.objects.filter(name="ltc")
-    dashusd = Currency.objects.filter(name="dash")
+    btcusd = Currency.objects.get(name="btc")
+    ethusd = Currency.objects.get(name="eth")
+    ltcusd = Currency.objects.get(name="ltc")
+    dashusd = Currency.objects.get(name="dash")
 
 
     context = {
@@ -127,7 +127,7 @@ def home(request, *args, **kwargs):
     else:
         return render(request, "pages/home.html", context)
 
-@require_http_methods(['POST'])
+# @require_http_methods(['GET', 'POST'])
 def contact(request):
     subject = request.POST.get('subject')
     name = request.POST.get('name')
