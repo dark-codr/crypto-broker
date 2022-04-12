@@ -106,7 +106,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
-    'leaflet',
+    # 'leaflet',
 
     # 'jet.dashboard',
     # 'jet',
