@@ -143,12 +143,12 @@ ABOUT US {{ block.super }}
         <div class="cursor-pointer shadow-xl w-full h-min flex items-center bg-primary/20 p-8 justify-between rounded-xl">
           <div @click="openIndex = {{forloop.counter}}"  x-show="openIndex !== {{forloop.counter}}" class="w-auto h-min flex items-center space-x-3">
             <svg class="w-8 h-8 text-primary flex-none" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z"></path></svg>
-            <span class="text-xl md:text-2xl font-black">{{f.question|title}}</span>
+            <span class="text-sm md:text-2xl font-black">{{f.question|title}}</span>
           </div>
 
           <div @click="openIndex = null"  x-show="openIndex === {{forloop.counter}}" class="w-auto h-min flex items-center space-x-3">
             <svg class="w-8 h-8 text-primary flex-none" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z"></path></svg>
-            <span class="text-xl md:text-2xl font-black">{{f.question|title}}</span>
+            <span class="text-sm md:text-2xl font-black">{{f.question|title}}</span>
           </div>
 
           <svg @click="openIndex = {{forloop.counter}}" x-show="openIndex !== {{forloop.counter}}" class=" flex-none duration-200 w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
