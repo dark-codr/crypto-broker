@@ -1,0 +1,14 @@
+
+<div class="rounded-xl text-dark bg-light-text w-full h-min text-center space-y-4">
+  {% if messages %}
+      {% for message in messages %}
+          <div class="w-full rounded-md text-xs bg-green-200 text-dark py-2 px-6 font-black" id="msg" role="alert">
+              {{ message }}
+          </div>
+      {% endfor %}
+  {% endif %}
+  <div class="md:flex md:items-center w-full h-min text-center md:space-x-4 md:space-y-0 space-y-4">
+    <input type="text" value="{{wallet}}" name="{{wallet}}" class="w-full text-dark placeholder:text-dark rounded-md font-bold text-sm border-primary outline-1 outline-primary bg-slate-400">
+    <button onclick="copytext(this)" data-text="{{wallet}}" class="bg-primary text-dark text-sm font-black py-2 px-5 rounded-md w-full">COPY</button>
+  </div>
+</div>

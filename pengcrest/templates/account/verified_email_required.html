@@ -1,0 +1,26 @@
+{% extends "account/base.html" %}
+
+{% load i18n static %}
+
+{% block head_title %}{% translate "Verify Your E-mail Address" %}{% endblock %}
+
+{% block inner %}
+<div>
+  <a href="/"><img class="mx-auto h-12 w-auto animate-bounce" src="{% static 'images/favicons/penAsh-bgout.png' %}" alt="logo"></a>
+  <h2 class="mt-6 text-center text-3xl font-extrabold text-light">Verify E-Mail Address</h2>
+</div>
+
+{% url 'account_email' as email_url %}
+
+<div class="w-full border-md p-6 bg-primary/20 text-light">
+  <p>{% blocktranslate %}This part of the site requires us to verify that
+    you are who you claim to be. For this purpose, we require that you
+    verify ownership of your e-mail address. {% endblocktranslate %}</p>
+
+    <p>{% blocktranslate %}We have sent an e-mail to you for
+    verification. Please click on the link inside this e-mail. Please
+    contact us if you do not receive it within a few minutes.{% endblocktranslate %}</p>
+
+    <p>{% blocktranslate %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktranslate %}</p>
+  </div>
+{% endblock %}

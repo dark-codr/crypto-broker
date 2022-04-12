@@ -1,0 +1,22 @@
+@tailwind base;
+
+@layer base {
+  body {
+    @apply font-body scrollbar-hide text-dark-text bg-dark;
+  }
+}
+
+@tailwind components;
+@layer components {
+
+  .hover-trigger .hover-target {
+    @apply hidden;
+  }
+
+  .hover-trigger:hover .hover-target {
+    @apply flex;
+  }
+
+}
+
+@tailwind utilities;

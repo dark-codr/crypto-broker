@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}
+AFFILIATE PROGRAM {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<header class="w-screen h-min pt-24 pb-8 md:px-28 px-8 flex items-center bg-primary/20">
+  <div class="w-1/2 h-min">
+    <h1 class="text-2xl font-black">Affiliate Program</h1>
+    <p class="text-xs text-primary">What you'll get as an Affiliate</p>
+  </div>
+  <div class="ml-auto h-min w-min flex flex-none items-right divide-x-2 divide-primary space-x-3">
+    <a href="{% url 'home' %}" class="flex-none text-xs font-normal hover:text-primary duration-200">Home</a>
+    <span class="block flex-none text-primary font-black text-xs pl-3">Affiliate</span>
+  </div>
+</header>
+<section class="w-full h-min bg-light-text">
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+    "symbols": [
+      {
+        "proName": "FOREXCOM:NSXUSD",
+        "title": "US 100"
+      },
+      {
+        "proName": "FX_IDC:EURUSD",
+        "title": "EUR/USD"
+      },
+      {
+        "proName": "BITSTAMP:BTCUSD",
+        "title": "Bitcoin"
+      },
+      {
+        "proName": "BITSTAMP:ETHUSD",
+        "title": "Ethereum"
+      },
+      {
+        "description": "BITCOIN / US DOLLAR",
+        "proName": "BITSTAMP:BTCUSD"
+      },
+      {
+        "description": "USD/JPY",
+        "proName": "FX:USDJPY"
+      },
+      {
+        "description": "Gold",
+        "proName": "TVC:GOLD"
+      },
+      {
+        "description": "Ethereum USDT",
+        "proName": "BINANCE:ETHUSDT"
+      }
+    ],
+    "showSymbolLogo": true,
+    "colorTheme": "dark",
+    "isTransparent": true,
+    "displayMode": "adaptive",
+    "locale": "en"
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+</section>
+
+
+<section class="md:flex md:items-center px-8 md:px-24 w-full py-8 relative bg-light-text overflow-hidden h-min">
+  <div class="flex-col text-center md:text-left h-min w-full md:w-1/2 space-y-8">
+    <div class="space-y-4 flex-col text-xl">
+      <strong class="text-primary font-semibold text-sm">What you'll get as</strong>
+      <h1 class="font-black text-2xl md:text-6xl">Affiliate Program</h1>
+      <p>We give you the opportuinity to earn money by recommending our website to people.</p>
+      <p>Whenever someone registers and invests with your referral link, you earn two percent of that investment.</p>
+    </div>
+  </div>
+  <!-- <img src="{% static 'images/affliate-img.png' %}" alt="afilliate" class="hidden md:block md:absolute md:-right-20"> -->
+
+  <div class="flex-col mx-auto text-xs justify-center md:text-right md:justify-end w-full md:w-1/2 space-y-3">
+    <div class="ml-auto w-80 h-min text-center space-y-4 py-8">
+      <img src="{% static 'images/2%.svg' %}" alt="2%" class="shadow w-80 h-80 object-cover transition ease-linear animate-pulse duration-500">
+      <p>Make money with <span class="font-black">PENGCREST</span></p>
+    </div>
+  </div>
+
+</section>
+
+<section class="px-8 md:px-24 w-full py-8 relative overflow-hidden text-center justify-center space-y-4">
+  <header class="text-primary font-semibold">Here's how it works</header>
+  <h3 class="text-2xl md:text-6xl font-black">Getting Started? It's Simple</h3>
+  <p class="text-sm text-light/50">The affiliate program is our special feature for loyal investors. Invite users and earn 2% <br>of the fee on their investment transactions!</p>
+  <div class="max-w-full space-x-8 md:justify-center h-min py-4 flex items-center overflow-x-scroll scrollbar-hide">
+    <div class="flex-col flex-none w-[320px] rounded-xl h-min py-6 px-10 bg-primary/20 text-center">
+      <strong class="font-black text-2xl uppercase">JOIN Program</strong>
+      <span class="block">Signup for referal programs</span>
+    </div>
+
+    <div class="flex-col flex-none w-[320px] rounded-xl h-min py-6 px-10 bg-primary/20 text-center">
+      <strong class="font-black text-2xl uppercase">Promote</strong>
+      <span class="block">Your Referral Link</span>
+    </div>
+
+    <div class="flex-col flex-none w-[320px] rounded-xl h-min py-6 px-10 bg-primary/20 text-center">
+      <strong class="font-black text-2xl uppercase">Earn</strong>
+      <span class="block">Referral Commision</span>
+    </div>
+  </div>
+</section>
+{% endblock content %}

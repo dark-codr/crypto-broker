@@ -1,0 +1,36 @@
+<div class="relative top-0 left-0 right-0 w-full max-w-full px-4 py-4 flex items-start justify-between">
+  <header class="sticky left-0 text-md font-bold">Transaction History</header>
+  <svg class="sticky left-0 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+</div>
+<div class="w-full max-w-full h-full max-h-full overflow-x-scroll scrollbar-hide">
+  <table class="table-fixed flex-none w-full max-w-full max-h-full bg-light-text p-4 overflow-y-scroll text-sm scrollbar-hide">
+    <thead class=" flex-none w-full bg-dark overflow-scroll text-sm scrollbar-hide">
+      <tr>
+        <th class=" flex-none py-3 w-[40px]">#</th>
+        <th class=" flex-none py-3 w-[120px]">Currency</th>
+        <th class=" flex-none py-3 w-[120px]">Transaction Type</th>
+        <th class=" flex-none py-3 w-[120px]">Status</th>
+        <th class=" flex-none py-3 w-[120px]">Amount</th>
+        <th class=" flex-none py-3 w-[120px]">Date</th>
+      </tr>
+    </thead>
+    <tbody class=" flex-none w-full bg-white/60 text-dark text-center p-4 overflow-scroll scrollbar-hide">
+      {% for r in transactions %}
+      <tr>
+        <td class=" flex-none  py-3 font-black text-sm w-[40px]">{{forloop.counter}}</td>
+        <td class=" flex-none  py-3 w-[120px] font-black text-dark">{{r.currency}}</td>
+        <td class=" flex-none  py-3 w-[120px] {% if r.status == 'SUCCESS' %}text-black{% elif r.status == 'PENDING' %}text-yellow-500{% else %}text-red-500{% endif %} font-semibold">{{ r.transaction_type }}</td>
+        <td class=" flex-none  py-3 w-[120px] {% if r.status == 'SUCCESS' %}text-black{% elif r.status == 'PENDING' %}text-yellow-500{% else %}text-red-500{% endif %} font-semibold">{{ r.status }}</td>
+        <td class=" flex-none  py-3 w-[120px] {% if r.status == 'SUCCESS' %}text-black{% elif r.status == 'PENDING' %}text-yellow-500{% else %}text-red-500{% endif %} font-semibold">{{ r.amount|floatformat:2 }}</td>
+        <td class=" flex-none  py-3 w-[120px] {% if r.status == 'SUCCESS' %}text-black{% elif r.status == 'PENDING' %}text-yellow-500{% else %}text-red-500{% endif %} font-semibold">{{ r.created|date:"d / m / Y" }}</td>
+      </tr>
+      {% empty %}
+      <tr class="w-full h-min py-4 px-8 text-center">
+        <td colspan="5" class="flex-none  py-3 w-[120px] font-black text-center uppercase">
+          No Transaction History
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

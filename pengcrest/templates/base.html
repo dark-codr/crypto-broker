@@ -1,0 +1,143 @@
+{% load static i18n compress tailwind_tags %}
+
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+<html lang="{{ LANGUAGE_CODE }}" class="max-w-screen max-h-screen" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %} — PENGCREST{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is an investment platform for everyone which provides an environment where one relaxes after investing and watches his/her investment yield profitable returns daily.">
+    <meta name="author" content="Eric Blomqvist">
+    <meta name="keywords" content="Pengcrest, investment, crypto investment, best investment platform in philippines, {% block kw %}{% endblock kw%}">
+
+    <link rel="icon" href="{% static 'images/favicons/penAsh-bgout.png' %}">
+
+    {% block css %}
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <!-- Your stuff: Third-party CSS libraries go here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:wght@500&family=Roboto:wght@100;300;400;500;700;900&family=Rubik+Microbe&display=swap" rel="stylesheet">
+
+    <!-- This file stores project-specific CSS -->
+    {% compress css %}
+    <link rel="preload" href="{% static 'css/project.css' %}" as="style" />
+    <link rel="stylesheet" href="{% static 'css/project.css' %}" />
+    {% endcompress %}
+
+    <link href="{% static 'css/iziToast.min.css' %}" rel="stylesheet">
+    {% endblock %}
+    <!-- Le javascript
+    ================================================== -->
+    {# Placed at the top of the document so pages load faster with defer #}
+    {% block javascript %}
+      <!-- <script src="https://use.fontawesome/releases/v6.0.0/js/all.js"></script> -->
+      <script async src="https://kit.fontawesome.com/cb5449eda5.js" crossorigin="anonymous"></script>
+      <script async defer type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script async nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <script defer src="https://unpkg.com/htmx.org@1.7.0"></script>
+      <script defer src="https://unpkg.com/alpinejs@3.9.5/dist/cdn.min.js"></script>
+      <script defer src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+      <!-- Your stuff: Third-party javascript libraries go here -->
+      <!-- place project specific Javascript in this file -->
+      {% compress js %}
+      <script defer src="{% static 'js/project.js' %}"></script>
+      {% endcompress %}
+
+    {% endblock javascript %}
+
+    {{form.media}}
+
+  </head>
+
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class=" max-w-screen h-screen" x-data="{mb_menu:false, privacy:false, returns:false, agreement:false}">
+
+    {% block navbar %}
+    {% include 'snippets/navbar.html' %}
+    {% endblock navbar %}
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <div @click="privacy = false" :class="{'max-w-0':privacy === false, 'w-screen':privacy === true}" class="duration-300 h-full fixed w-screen bg-light-text/50 top-0 left-0 justify-center items-center flex z-40">
+    </div>
+
+    <div :class="{'hidden':privacy === false, 'flex-col':privacy === true}" class="hidden z-50 fixed rounded-md left-[50%] top-[50%] transform -translate-x-1/2 -translate-y-1/2 md:w-[512px] w-[320px] max-h-[80vh] bg-dark p-4 space-y-4 overflow-y-scroll scrollbar-hide">
+      <h2 class="font-black text-4xl text-primary">Privacy Policy</h2>
+      {{privacy.doc|safe}}
+    </div>
+
+    <div @click="returns = false" :class="{'max-w-0':returns === false, 'w-screen':returns === true}" class="duration-300 h-full fixed w-screen bg-light-text/50 top-0 left-0 justify-center items-center flex z-40">
+    </div>
+
+    <div :class="{'hidden':returns === false, 'flex-col':returns === true}" class="hidden z-50 fixed rounded-md left-[50%] top-[50%] transform -translate-x-1/2 -translate-y-1/2 md:w-[512px] w-[320px] max-h-[80vh] bg-dark p-4 space-y-4 overflow-y-scroll scrollbar-hide">
+      <h2 class="font-black text-4xl text-primary">Returns Policy</h2>
+      {{returns.doc|safe}}
+    </div>
+
+    <div @click="agreement = false" :class="{'max-w-0':agreement === false, 'w-screen':agreement === true}" class="duration-300 h-full fixed w-screen bg-light-text/50 top-0 left-0 justify-center items-center flex z-40">
+    </div>
+
+    <div :class="{'hidden':agreement === false, 'flex-col':agreement === true}" class="hidden z-50 fixed rounded-md left-[50%] top-[50%] transform -translate-x-1/2 -translate-y-1/2 md:w-[512px] w-[320px] max-h-[80vh] bg-dark p-4 space-y-4 overflow-y-scroll scrollbar-hide">
+      <h2 class="font-black text-4xl text-primary fixed top-0 left-0 w-full block">Customer Agreement</h2>
+      {{agreement.doc|safe}}
+    </div>
+
+
+
+    {% block modal %}{% endblock modal %}
+
+    {% block footer %}
+    {% include 'snippets/footer.html' %}
+    {% endblock footer %}
+
+
+    {% block inline_javascript %}
+    {% comment %}
+    Script tags with only code, no src (defer by default). To run
+    with a "defer" so that you run inline code:
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
+    </script>
+    {% endcomment %}
+    {% endblock inline_javascript %}
+
+    <script src="{% static 'js/iziToast.min.js' %}"></script>
+
+    <!-- Toast alert script -->
+    {% for message in messages %}
+    <script>
+      //iziToast.{{ message.tags }}({
+
+          iziToast.{{ message.tags }}({
+            timeout: 5000,
+            resetOnHover: true,
+            position: 'bottomRight',
+            drag: true,
+            pauseOnHover: true,
+            transitionIn: 'fadeInUp',
+            transitionOut: 'fadeOutDown',
+            transitionInMobile: 'fadeInUp',
+            transitionOutMobile: 'fadeOutDown',
+            close: true,
+            displayMode: 2,
+            progressBar: true,
+            progressBarEasing: 'ease',
+            color: '{% if message.tags == "success" %}green{% elif message.tags == "warning" %}yellow{% elif message.tags == "info" %}blue{% else %}red{% endif %}',
+            icon: '{% if message.tags == "success" %}fa fa-thumbs-up{% elif message.tags == "warning" %}fa fa-exclamation-triangle{elif message.tags == "info"}fa fa-info-circle{% else %}fa fa-bug{% endif %}',
+            balloon: true,
+            id: '{{ message.tags }}',
+            title: '{{ message.tags|capfirst }}',
+            message: '{{ message }}',
+          });
+    </script>
+    {% endfor %}
+
+  </body>
+</html>

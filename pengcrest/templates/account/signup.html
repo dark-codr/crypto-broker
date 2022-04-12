@@ -1,0 +1,40 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags static %}
+
+{% block head_title %}{% translate "Signup" %}{% endblock %}
+
+{% block inner %}
+<div>
+  <a href="/"><img class="mx-auto h-12 w-auto animate-bounce" src="{% static 'images/favicons/penAsh-bgout.png' %}" alt="logo"></a>
+  <h2 class="mt-6 text-center text-3xl font-extrabold text-light">Create a Free Account</h2>
+  <p class="mt-2 text-center text-xl ">
+    Or
+    <a href="{{ login_url }}" class="font-medium text-primary hover:text-primary"> login to your existing account </a>
+  </p>
+</div>
+<form class="signup space-y-6" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  <div class="rounded-md shadow-sm -space-y-px overlay-hidden">
+    <div class="text-red-500 text-sm mb-2 w-full text-center pb-4" id="username-err"></div>
+    <div class="text-red-500 text-sm mb-2 w-full text-center pb-4" id="email-err"></div>
+    {{ form|crispy }}
+  </div>
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <div>
+    <button type="submit" class="primaryAction group relative w-full flex justify-center py-2 px-4 border border-transparent text-xl font-bold rounded-md text-dark bg-primary hover:bg-primary/60 focus:outline-none focus:ring-0 focus:shadow-primary hover:shadow-primary">
+      <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+        <!-- Heroicon name: solid/lock-closed -->
+        <svg class="h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+        </svg>
+      </span>
+      {% translate "Sign Up" %}
+    </button>
+  </div>
+</form>
+
+{% endblock %}

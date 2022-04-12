@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}
+AFFILIATE PROGRAM {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<header class="w-screen h-min pt-24 pb-8 md:px-28 px-8 flex items-center bg-primary/20">
+  <div class="w-1/2 h-min">
+    <h1 class="text-2xl font-black">Contact Support</h1>
+    <p class="text-xs text-primary">We have answers!</p>
+  </div>
+  <div class="ml-auto h-min w-min flex flex-none items-right divide-x-2 divide-primary space-x-3">
+    <a href="{% url 'home' %}" class="flex-none text-xs font-normal hover:text-primary duration-200">Home</a>
+    <span class="block flex-none text-primary font-black text-xs pl-3">Contact</span>
+  </div>
+</header>
+<section class="w-full h-min bg-light-text">
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+    "symbols": [
+      {
+        "proName": "FOREXCOM:NSXUSD",
+        "title": "US 100"
+      },
+      {
+        "proName": "FX_IDC:EURUSD",
+        "title": "EUR/USD"
+      },
+      {
+        "proName": "BITSTAMP:BTCUSD",
+        "title": "Bitcoin"
+      },
+      {
+        "proName": "BITSTAMP:ETHUSD",
+        "title": "Ethereum"
+      },
+      {
+        "description": "BITCOIN / US DOLLAR",
+        "proName": "BITSTAMP:BTCUSD"
+      },
+      {
+        "description": "USD/JPY",
+        "proName": "FX:USDJPY"
+      },
+      {
+        "description": "Gold",
+        "proName": "TVC:GOLD"
+      },
+      {
+        "description": "Ethereum USDT",
+        "proName": "BINANCE:ETHUSDT"
+      }
+    ],
+    "showSymbolLogo": true,
+    "colorTheme": "dark",
+    "isTransparent": true,
+    "displayMode": "adaptive",
+    "locale": "en"
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+</section>
+
+<section class="md:flex md:items-start md:space-y-0 space-y-4 w-full px-8 md:px-24 pt-10 pb-16 md:pb-28">
+  <form class="relative w-full md:w-2/3 h-min bg-primary/20 space-y-4 px-8 pt-8 pb-16 flex-none rounded-xl shadow-md hover:shadow-neutral-600/40">
+    <div class="text-center pb-10 mx-auto font-bold text-4xl">Get in Touch <br> <span class="text-sm font-normal">24/7 Customer support system</span></div>
+    <input placeholder="Your Name" name="name" type="text" required class="focus:outline-none focus:border-none bg-white/60 shadow-inner text-dark text-xl appearance-none border-none w-full rounded-xl py-4 px-3 leading-tight">
+    <input placeholder="Your Email" name="email" type="email" required class="focus:outline-none focus:border-none bg-white/60 shadow-inner text-dark text-xl appearance-none border-none w-full rounded-xl py-4 px-3 leading-tight">
+    <textarea name="message" placeholder="Your Message" required class="focus:outline-none focus:border-none bg-white/60 shadow-inner text-dark text-xl appearance-none border-none w-full h-30 rounded-xl py-4 px-3 leading-tight"></textarea>
+    <div class="flex items-center w-full space-x-4">
+      <input id="newsletter" type="checkbox" name="newsletter" class="rounded text-live-bg dark:text-primary"> <label for="newsletter" class="uppercase text-xs font-normal">I agree to recieve emails, newsletter and promotional messages</label>
+    </div>
+    <button hx-post="javascript:;" type="submit" class="absolute -bottom-7 block bg-primary hover:bg-primary/70 hover:shadow-md duration-300 uppercase text-dark text-xl rounded px-6 py-3">Send Message</button>
+  </form>
+
+  <div class="w-auto h-min p-10 space-y-4">
+    <h2 class="md:text-4xl text-2xl font-semibold">Have Questions?</h2>
+    <p class="text-left">Have questions about payments or price plans? We have answers!</p>
+    <a href="{% url 'about' %}#faq" class="flex items-center space-x-5 font-medium tracking-wider text-primary">Read F. A. Q <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg></a>
+  </div>
+</section>
+{% endblock content %}

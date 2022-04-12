@@ -1,0 +1,16 @@
+{% extends "account/base.html" %}
+
+{% load i18n static %}
+
+{% block head_title %}{% translate "Verify Your E-mail Address" %}{% endblock %}
+
+{% block inner %}
+<div>
+  <a href="/"><img class="mx-auto h-12 w-auto animate-bounce" src="{% static 'images/favicons/penAsh-bgout.png' %}" alt="logo"></a>
+  <h2 class="mt-6 text-center text-3xl font-extrabold text-light">Verify Your E-Mail Address</h2>
+</div>
+
+<div class="w-full border-md p-6 bg-primary/20 text-light">
+  <p>{% blocktranslate %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktranslate %}</p>
+</div>
+{% endblock %}
