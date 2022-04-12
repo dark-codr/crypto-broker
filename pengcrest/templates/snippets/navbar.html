@@ -47,11 +47,11 @@
   <div class="w-full h-min py-2 flex flex-col items-center uppercase absolute bottom-0 left-0 text-center">
       <!-- <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path> </svg> -->
       {% if request.user.is_authenticated %}
-        <a href="{% url 'users:detail' request.user.username %}" class="bg-primary px-4 py-6 flex-none font-black text-primary text-heading  duration-200 w-full {% if request.path == '/users/' %}{% endif %} ">Account</a>
+        <a href="{% url 'users:detail' request.user.username %}" class="bg-primary px-4 py-6 flex-none font-black text-dark text-heading  duration-200 w-full ">Account</a>
         <a href="{% url 'account_logout' %}" class="bg-red-500 text-light uppercase font-black text-heading duration-200 w-full hover:text-dark {% if request.path == '/accounts/logout/' %}text-light{% endif %} py-6 px-4 flex-none">Logout</a>
       {% else %}
-        <a href="{% url 'account_login' %}" class="bg-light-text px-4 py-6 flex-none font-black text-primary text-heading  duration-200 w-full {% if request.path == '/accounts/login/' %}{% endif %} ">Login</a>
-        <a href="{% url 'account_signup' %}" class="bg-primary text-dark uppercase font-black text-heading duration-200 w-full hover:text-dark {% if request.path == '/accounts/signup/' %}text-dark{% endif %} py-6 px-4 flex-none">Get Started</a>
+        <a href="{% url 'account_login' %}" class="bg-light-text px-4 py-6 flex-none font-black text-primary text-heading  duration-200 w-full">Login</a>
+        <a href="{% url 'account_signup' %}" class="bg-primary text-dark uppercase font-black text-heading duration-200 w-full hover:text-dark  py-6 px-4 flex-none">Get Started</a>
       {% endif %}
   </div>
 </div>
