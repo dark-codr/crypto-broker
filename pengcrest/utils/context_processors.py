@@ -5,9 +5,9 @@ from django.db.models import Q
 from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.contrib.gis.geoip2 import GeoIP2
-from django.contrib.gis.db.models.functions import GeometryDistance
-from django.contrib.gis.geos import Point
+# from django.contrib.gis.geoip2 import GeoIP2
+# from django.contrib.gis.db.models.functions import GeometryDistance
+# from django.contrib.gis.geos import Point
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.functional import SimpleLazyObject
 
@@ -29,15 +29,15 @@ def context_settings(request):
             ip = '8.8.8.8'
 
     #  Get current location on google map
-    g = GeoIP2()
-    location = g.city(ip)
-    location_country = location["country_name"]
-    location_country_code = location["country_code"]
-    location_latitude = location["latitude"]
-    location_longitude = location["longitude"]
-    location_city = location["city"]
+    # g = GeoIP2()
+    # location = g.city(ip)
+    # location_country = location["country_name"]
+    # location_country_code = location["country_code"]
+    # location_latitude = location["latitude"]
+    # location_longitude = location["longitude"]
+    # location_city = location["city"]
 
-    current_loc = Point(location_longitude, location_latitude, srid=4326)
+    # current_loc = Point(location_longitude, location_latitude, srid=4326)
 
     if not Mode.objects.filter(ip=ip).exists():
         Mode.objects.create(ip=ip, theme="light")
@@ -75,11 +75,11 @@ def context_settings(request):
         "DEBUG": settings.DEBUG,
 
         'user_ip': ip,
-        'location_country': location_country,
-        'location_country_code': location_country_code,
-        'location_latitude': location_latitude,
-        'location_longitude': location_longitude,
-        'location_city': location_city,
+        # 'location_country': location_country,
+        # 'location_country_code': location_country_code,
+        # 'location_latitude': location_latitude,
+        # 'location_longitude': location_longitude,
+        # 'location_city': location_city,
 
         "privacy": privacy,
         "returns": returns,

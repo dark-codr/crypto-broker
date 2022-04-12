@@ -274,3 +274,5 @@ pengcrest/media/
 .pytest_cache/
 .env
 .envs/*
+
+geoip/*

@@ -89,7 +89,7 @@ MESSAGE_TAGS = {
 DATABASES = {
     "default": env.db(
         "DATABASE_URL",
-        default="postgis:///pengcrest",
+        default="postgres:///pengcrest",
     ),
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
@@ -152,7 +152,7 @@ THIRD_PARTY_APPS = [
     'parler',
 
     # IP Address and Location
-    'geoip2',
+    # 'geoip2',
     # Get User phone details from IP
     'django_user_agents',
 
@@ -492,7 +492,7 @@ NUMBER_GROUPING = 3
 HTML_MINIFY = True
 EXCLUDE_FROM_MINIFYING = ('^jet/', '^admin/', '^tinymce/', '^filebrowser/')
 KEEP_COMMENTS_ON_MINIFYING = True
-GEOIP_PATH = str(ROOT_DIR / "geoip")
+# GEOIP_PATH = str(ROOT_DIR / "geoip")
 
 
 CRONJOBS = [
