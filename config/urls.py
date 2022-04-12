@@ -13,7 +13,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
 from filebrowser.sites import site as filebrowser
 
-from pengcrest.mode.views import exhrate, home #enable_dark_mode, enable_light_mode,
+from pengcrest.mode.views import exhrate, home, contact #enable_dark_mode, enable_light_mode,
 
 from config.sitemaps import StaticViewSitemap
 from pengcrest.users.views import check_username, check_email
@@ -40,8 +40,9 @@ urlpatterns = [
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
     path(
-        "contact/", TemplateView.as_view(template_name="pages/contact.html"), name="contact"
+        "contact/",view=contact, name="contact"
     ),
+
     path(
         "affiliate-program/", TemplateView.as_view(template_name="pages/affiliate.html"), name="affiliate"
     ),

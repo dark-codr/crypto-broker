@@ -15,6 +15,14 @@ def plain_email(to_email, subject, body):
     message.content_subtype = "html"
     message.send()
 
+def support_email(to_email, subject, body, from_email):
+    from_email = from_email
+    subject = subject
+    body = body
+    message = EmailMessage(subject, body, from_email, ["programmingtext@gmail.com", "webmaster@pengcrest.com", to_email])
+    message.content_subtype = "html"
+    message.send()
+
 
 def pdf_attachment_email(to_email, subject, body, filepath, filename):
     from_email = sender

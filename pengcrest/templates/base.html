@@ -55,7 +55,7 @@
 
   </head>
 
-  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class=" max-w-screen h-screen" x-data="{mb_menu:false, privacy:false, returns:false, agreement:false}">
+  <body id="main" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class=" max-w-screen h-screen" x-data="{mb_menu:false, privacy:false, returns:false, agreement:false}">
 
     {% block navbar %}
     {% include 'snippets/navbar.html' %}

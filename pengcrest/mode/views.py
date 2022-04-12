@@ -10,6 +10,12 @@ from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
 
+from django.urls import reverse
+from django.template.loader import get_template, render_to_string
+from django.utils.safestring import mark_safe
+
+from pengcrest.utils.emails import plain_email, support_email
+
 from pengcrest.utils.logger import LOGGER
 
 from .models import Mode, Currency
@@ -119,5 +125,38 @@ def home(request, *args, **kwargs):
         return render(request, "snippets/crypto_price.html", context)
     else:
         return render(request, "pages/home.html", context)
+
+@require_http_methods(['POST'])
+def contact(request):
+    subject = request.POST.get('subject')
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    message = request.POST.get('message')
+    agree = request.POST.get('newsletter')
+
+    support_message = f"""
+    Dear Support,
+    <br>
+    <br>
+    {name.title()} Just sent you a new support email enquiring about
+    <br>
+    <br>
+    Enquiry: {message}
+    <br>
+    <br>
+    Please do well to respond appropriately and on time.
+    <br>
+    <br>
+    """
+
+    if agree and User.objects.filter(email=email).exists():
+        User.objects.filter(email=email).update(newsletter=True)
+
+
+    messages.success(request, "Your message has been sent successfully.")
+    message = get_template('mail/simple_mail.html').render(context={"subject": subject.title(), "body": mark_safe(support_message)})
+    support_email(to_email="support@pengcrest.com", from_email=email, subject=subject.title(), body=message)
+
+    return render(request, "pages/contact.html")
 
 

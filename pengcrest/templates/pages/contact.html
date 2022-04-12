@@ -70,13 +70,16 @@ AFFILIATE PROGRAM {{ block.super }}
 <section class="md:flex md:items-start md:space-y-0 space-y-4 w-full px-8 md:px-24 pt-10 pb-16 md:pb-28">
   <form class="relative w-full md:w-2/3 h-min bg-primary/20 space-y-4 px-8 pt-8 pb-16 flex-none rounded-xl shadow-md hover:shadow-neutral-600/40">
     <div class="text-center pb-10 mx-auto font-bold text-4xl">Get in Touch <br> <span class="text-sm font-normal">24/7 Customer support system</span></div>
-    <input placeholder="Your Name" name="name" type="text" required class="focus:outline-none focus:border-none bg-white/60 shadow-inner text-dark text-xl appearance-none border-none w-full rounded-xl py-4 px-3 leading-tight">
+    <div class="w-full md:flex md:items-center md:space-x-4 md:space-y-0 space-y-4">
+      <input placeholder="Your Name" name="name" type="text" required class="focus:outline-none focus:border-none bg-white/60 shadow-inner text-dark text-xl appearance-none border-none w-full md:w-1/2 rounded-xl py-4 px-3 leading-tight">
+      <input placeholder="Your Subject" name="subject" type="text" required class="focus:outline-none focus:border-none bg-white/60 shadow-inner text-dark text-xl appearance-none border-none w-full md:w-1/2 rounded-xl py-4 px-3 leading-tight">
+    </div>
     <input placeholder="Your Email" name="email" type="email" required class="focus:outline-none focus:border-none bg-white/60 shadow-inner text-dark text-xl appearance-none border-none w-full rounded-xl py-4 px-3 leading-tight">
     <textarea name="message" placeholder="Your Message" required class="focus:outline-none focus:border-none bg-white/60 shadow-inner text-dark text-xl appearance-none border-none w-full h-30 rounded-xl py-4 px-3 leading-tight"></textarea>
     <div class="flex items-center w-full space-x-4">
       <input id="newsletter" type="checkbox" name="newsletter" class="rounded text-live-bg dark:text-primary"> <label for="newsletter" class="uppercase text-xs font-normal">I agree to recieve emails, newsletter and promotional messages</label>
     </div>
-    <button hx-post="javascript:;" type="submit" class="absolute -bottom-7 block bg-primary hover:bg-primary/70 hover:shadow-md duration-300 uppercase text-dark text-xl rounded px-6 py-3">Send Message</button>
+    <button hx-post="{% url 'contact' %}" hx-swap="innerHTML" hx-target="#main" type="submit" class="absolute -bottom-7 block bg-primary hover:bg-primary/70 hover:shadow-md duration-300 uppercase text-dark text-xl rounded px-6 py-3">Send Message</button>
   </form>
 
   <div class="w-auto h-min p-10 space-y-4">
