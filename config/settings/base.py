@@ -126,7 +126,7 @@ DJANGO_APPS = [
     "django.contrib.humanize",  # Handy template tags
     "django.contrib.admin",
     "django.contrib.admindocs",
-    'django.contrib.gis',
+    # 'django.contrib.gis',
     "django.forms",
 ]
 THIRD_PARTY_APPS = [
