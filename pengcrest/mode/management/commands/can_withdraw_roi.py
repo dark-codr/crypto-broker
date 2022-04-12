@@ -3,7 +3,6 @@ from datetime import timezone
 from decimal import Decimal
 import datetime
 
-from decimal import Decimal
 from django.db.models import Sum
 
 import requests
