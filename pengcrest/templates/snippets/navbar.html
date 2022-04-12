@@ -40,9 +40,9 @@
   </div> -->
   <div class="w-full h-min space-y-4 justify-center uppercase">
     <a href="{% url 'home' %}" class="flex flex-none font-black text-heading  duration-200 w-full  {% if request.path == '/' %}text-black bg-primary p-2 rounded-tr-2xl{% endif %}"><span class="block my-auto">Home</span></a>
-    <a href="{% url 'about' %}" class="flex flex-none font-black text-heading  duration-200 w-full {% if request.path == '/about/' %}text-black bg-primary p-2 rounded-tr-2xl{% endif %}"><span class="block my-auto">About</span></a>
-    <a href="{% url 'affiliate' %}" class="flex flex-none font-black text-heading  duration-200 w-full {% if request.path == '/affiliate-program/' %}text-black bg-primary p-2 rounded-tr-2xl{% endif %}"><span class="block my-auto">Affiliate</span></a>
-    <a href="{% url 'contact' %}" class="flex flex-none font-black text-heading  duration-200 w-full {% if request.path == '/contact/' %}text-black bg-primary p-2 rounded-tr-2xl{% endif %}"><span class="block my-auto">Contact</span></a>
+    <a href="{% url 'about' %}" class="flex flex-none font-black text-heading  duration-200 w-full {% if request.path == '/about/' %}text-black bg-primary p-2{% endif %}"><span class="block my-auto">About</span></a>
+    <a href="{% url 'affiliate' %}" class="flex flex-none font-black text-heading  duration-200 w-full {% if request.path == '/affiliate-program/' %}text-black bg-primary p-2{% endif %}"><span class="block my-auto">Affiliate</span></a>
+    <a href="{% url 'contact' %}" class="flex flex-none font-black text-heading  duration-200 w-full {% if request.path == '/contact/' %}text-black bg-primary p-2 rounded-br-2xl{% endif %}"><span class="block my-auto">Contact</span></a>
   </div>
   <div class="w-full h-min py-2 flex flex-col items-center uppercase absolute bottom-0 left-0 text-center">
       <!-- <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path> </svg> -->
