@@ -15,11 +15,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         for u in users:
-            three_months = u.wallet.invested_date + datetime.timedelta(weeks=12)
-            if u.wallet.invested_date and datetime.date.today() > three_months:
-                User.objects.filter(username=u.username).update(can_withdraw = True)
-                LOGGER.success(f"{u.username.title()} investment plan has ended")
-            else:
-                LOGGER.error(f"{u.username.title()} investment plan is still running")
+            if u.wallet.invested_date:
+                three_months = u.wallet.invested_date + datetime.timedelta(weeks=12)
+                if u.wallet.invested_date and datetime.date.today() > three_months:
+                    User.objects.filter(username=u.username).update(can_withdraw = True)
+                    LOGGER.success(f"{u.username.title()} investment plan has ended")
+                else:
+                    LOGGER.error(f"{u.username.title()} investment plan is still running")
 
         self.stdout.write("Can Withdraw Set Successfully.")
