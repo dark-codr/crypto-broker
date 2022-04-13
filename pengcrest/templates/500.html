@@ -3,9 +3,19 @@
 {% block title %}Server Error{% endblock %}
 
 {% block content %}
-<h1>Ooops!!! 500</h1>
+<div class="pt-28 pb-10 min-w-[100vw] h-screen justify-center">
+  <div class="max-w-md w-full space-y-8 mx-auto px-10 md:px-4 py-10">
+    <div>
+      <a href="/"><img class="mx-auto h-12 w-auto animate-bounce" src="{% static 'images/favicons/penAsh-bgout.png' %}" alt="logo"></a>
+      <h1 class="mt-6 text-center text-3xl font-extrabold text-light">Ooops!!! 500</h1>
+    </div>
+    <div class="w-full border-md p-6 bg-primary/20 text-light">
+      <h3 class="text-xl">Looks like something went wrong!</h3>
+      <p class="text-sm">We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, try refreshing.</p>
+    </div>
+  </div>
+</div>
 
-<h3>Looks like something went wrong!</h3>
 
-<p>We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, try refreshing.</p>
+
 {% endblock content %}
