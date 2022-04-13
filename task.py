@@ -34,7 +34,7 @@ def run_commands():
     dokku_commands = os.system("dokku run -rm pengcrest python manage.py rates && dokku run -rm pengcrest python manage.py daily_roi && dokku run -rm pengcrest python manage.py can_topup && dokku run -rm pengcrest python manage.py can_withdraw_roi && dokku run -rm pengcrest python manage.py can_reinvest && dokku run -rm pengcrest python manage.py can_withdraw")
     print("scripts ran with status code: %d" % dokku_commands)
 
-schedule.every(1).day.at("03:30").do(run_commands) # run commands every day at 3:30 am
+schedule.every(1).day.at("15:30").do(run_commands) # run commands every day at 3:30 am
 
 # Start the background thread
 stop_run_continuously = run_continuously()
