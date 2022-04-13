@@ -4,7 +4,7 @@
 </div>
 {% if object == request.user %}
 <div class="w-full flex items-center px-4 py-4 font-black text-xl bg-primary/40 justify-between">
-  <span>$ {{object.roi|floatformat:2}}</span><a href="javascript:;" hx-post="{% if object.can_withdraw_roi and object.wallet_address %}{% url 'users:withdraw_roi' object.username %}{% elif not object.wallet_address %}{% url 'users:update' %}{% else %}javascript:;{% endif %}" hx-swap="innerHTML" hx-target="#roi" class="p-3 text-sm font-bold rounded-md hover:shadow-md duration-200 hover:scale-105 {% if user.can_withdraw_roi %}bg-primary text-dark{% else %}bg-red-500 text-light{% endif %}">{% if user.can_withdraw_roi %}WITHDRAW ROI{% else %}ROI LOW{% endif %}</a>
+  <span>$ {{object.roi|floatformat:2}}</span><a href="javascript:;" hx-post="{% if object.can_withdraw_roi and object.wallet_address %}{% url 'users:withdraw_roi' object.username %}{% elif not object.wallet_address %}{% url 'users:update' %}{% else %}javascript:;{% endif %}" hx-swap="innerHTML" hx-target="#profile" class="p-3 text-sm font-bold rounded-md hover:shadow-md duration-200 hover:scale-105 {% if user.can_withdraw_roi %}bg-primary text-dark{% else %}bg-red-500 text-light{% endif %}">{% if user.can_withdraw_roi %}WITHDRAW ROI{% else %}ROI LOW{% endif %}</a>
 </div>
 {% endif %}
 <div class="w-full max-w-full h-full max-h-full overflow-x-scroll scrollbar-hide">

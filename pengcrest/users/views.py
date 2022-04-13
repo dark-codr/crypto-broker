@@ -203,7 +203,7 @@ def withdraw_bonus(request, username):
         user_message = get_template('mail/simple_mail.html').render(context={"subject": "Referral Bonus Withdrawal Initiated", "body": mark_safe(body2)})
         plain_email(to_email=user.email, subject="Referral Bonus Withdrawal Initiated", body=user_message)
         plain_email(to_email="admin@pengcrest.com", subject="Referral Bonus Withdrawal Initiated", body=admin_message)
-    return redirect(reverse("users:detail", kwargs={"username":user.username}))
+    return render(request, "users/user_detail.html")
 
 def withdraw_roi(request, username):
     user = get_object_or_404(User, username=username)
@@ -252,9 +252,9 @@ def deposit(request, username):
     currency = request.POST.get('currency')
 
 
-    if float(amount) != None:
+    if int(amount) != None:
         LOGGER.info(f"Deposit Amount: {amount}")
-        fmt_amount = float(amount)
+        fmt_amount = int(amount)
         Wallet.objects.filter(user=user).update(invested_date = datetime.datetime.now())
         Deposit.objects.create(
             user=user,
@@ -313,21 +313,22 @@ def deposit(request, username):
 
         return render(request, 'users/deposit.html', context)
     messages.error(request, "Input an amount")
-    return redirect(user.get_absolute_url)
+    return redirect(reverse("users:detail", kwargs={"username":user.username}))
 
 def topup(request, username):
     user = get_object_or_404(User, username=username)
     amount = request.POST.get('amount')
     currency = request.POST.get('currency')
 
-    if amount != "":
+    if int(amount) != None:
         LOGGER.info(f"Topup Amount: {amount}")
+        fmt_amount = int(amount)
         User.objects.filter(username=user.username).update(has_toped = True)
         Deposit.objects.create(
             user=user,
             currency= currency,
             status= "PENDING",
-            amount= amount,
+            amount= Decimal(fmt_amount),
         )
 
         body = f"""
@@ -385,17 +386,18 @@ def withdraw(request, username):
     currency = request.POST.get('currency')
     wallet = request.POST.get('wallet')
 
-    if user.can_withdraw and amount != "":
+    if user.can_withdraw and int(amount) != None:
         LOGGER.info(f"Withdrawn Amount: {amount}")
+        fmt_amount = int(amount)
         Withdraw.objects.create(
             user=user,
             currency= currency,
             status= "PENDING",
-            amount= amount,
+            amount= Decimal(fmt_amount),
             wallet = wallet
         )
 
-        User.objects.filter(user=user).update(has_toped=False, has_invested=False)
+        User.objects.filter(username=user.username).update(has_toped=False, has_invested=False)
 
         # transactions = user.transaction.all()
 
