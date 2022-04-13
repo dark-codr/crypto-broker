@@ -1089,6 +1089,10 @@ body::-webkit-scrollbar {
   flex-grow: 1;
 }
 
+.table-auto {
+  table-layout: auto;
+}
+
 .table-fixed {
   table-layout: fixed;
 }
