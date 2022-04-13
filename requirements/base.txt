@@ -32,7 +32,7 @@ google-api-python-client==1.4.1
 
 django-stdimage==5.3.0 # http://johannes.maron.family/django-stdimage/
 
-django-countries-plus==2.0.0
+django-countries-plus==2.1.0
 
 geocoder==1.38.1
 ratelim==0.1.6
