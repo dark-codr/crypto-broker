@@ -28,16 +28,26 @@ admin.site.register(TransactionHistory)
 @admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):
 
+
+
+
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
     fieldsets = (
         (None, {"fields": ("username", "password")}),
         (_("Personal info"), {"fields": ("name", "email", "phone")}),
-        (_("Private info"), {"fields": ("unique_id", "recommended_by")}),
+        (_("Private info"), {"fields": ("unique_id", "bonus",
+        "roi", "recommended_by")}),
+        (_("Wallet Addresses"), {"fields": ("wallet_address",
+            "eth_address",
+            "ltc_address",
+            "dash_address",)}
+        ),
         (
             _("Permissions"),
             {
                 "fields": (
+                    "first_investment",
                     "has_invested", "has_toped", "can_topup", "can_withdraw_roi",
                     "can_withdraw",
                     "newsletter",

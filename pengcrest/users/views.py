@@ -253,6 +253,7 @@ def deposit(request, username):
 
 
     if amount != "":
+        LOGGER.info(f"Deposit Amount: {amount}")
         Wallet.objects.filter(user=user).update(invested_date = datetime.datetime.now())
         Deposit.objects.create(
             user=user,
@@ -289,6 +290,7 @@ def deposit(request, username):
             <br>
             <br>
         """
+        LOGGER.info("deposit successful")
 
         messages.success(request, f"Deposited {amount} into your {currency} wallet. Processing your payment verification 1 of 3")
         admin_message = get_template('mail/admin_mail.html').render(context={"subject": "New Deposit Request", "body": mark_safe(body)})
@@ -309,7 +311,7 @@ def deposit(request, username):
         }
 
         return render(request, 'users/deposit.html', context)
-    messages.error(request, "Input and amount")
+    messages.error(request, "Input an amount")
     return redirect(user.get_absolute_url)
 
 def topup(request, username):
@@ -318,6 +320,7 @@ def topup(request, username):
     currency = request.POST.get('currency')
 
     if amount != "":
+        LOGGER.info(f"Topup Amount: {amount}")
         User.objects.filter(username=user.username).update(has_toped = True)
         Deposit.objects.create(
             user=user,
@@ -382,6 +385,7 @@ def withdraw(request, username):
     wallet = request.POST.get('wallet')
 
     if user.can_withdraw and amount != "":
+        LOGGER.info(f"Withdrawn Amount: {amount}")
         Withdraw.objects.create(
             user=user,
             currency= currency,
