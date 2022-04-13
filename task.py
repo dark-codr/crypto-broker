@@ -40,7 +40,7 @@ def run_commands():
     dokku run -rm pengcrest python manage.py can_withdraw""", shell=True)
     print("scripts ran with status code: %d" % dokku_commands)
 
-schedule.every(1).day.at("11:46").do(run_commands) # run commands every day at 3:30 am
+schedule.every(1).day.at("04:15").do(run_commands) # run commands every day at 3:30 am
 # schedule.every(1).seconds.do(run_commands) # run commands every day at 3:30 am
 
 # # Start the background thread
