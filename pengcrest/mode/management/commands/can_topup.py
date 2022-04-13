@@ -33,7 +33,7 @@ class Command(BaseCommand):
             if u.wallet.invested_date and datetime.date.today() > (one_months or two_months) < three_months:
                 User.objects.filter(username=u.username).update(has_toped = False)
                 LOGGER.info(f"{u.username.title()} can now topup their account")
-            else:
+            elif datetime.date.today() < (one_months or two_months) < three_months:
                 LOGGER.info(f"{u.username.title()} plan is still running")
 
 

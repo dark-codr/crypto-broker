@@ -23,7 +23,7 @@ from pengcrest.users.models import Deposit, TransactionHistory, User, Wallet
 
 
 class Command(BaseCommand):
-    help = _("Get daily roi")
+    help = _("Can Withdraw ROI")
 
     def handle(self, *args, **kwargs):
         users = User.objects.all()
