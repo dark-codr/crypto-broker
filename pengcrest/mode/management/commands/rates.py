@@ -1,11 +1,8 @@
-import json
-from datetime import timezone
 from decimal import Decimal
 
 import requests
 from django.conf import settings
 from django.contrib.auth import authenticate, get_user_model, login
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand
 from django.http import JsonResponse
 from django.utils.translation import gettext_lazy as _
@@ -15,9 +12,10 @@ from pengcrest.utils.logger import LOGGER
 from pengcrest.mode.models import Currency
 
 User = get_user_model()
-
-
 class Command(BaseCommand):
+    """
+    This just retrieves a set of crypto currency current prices
+    """
     help = _("Collect current bank rates")
     """
     BTC=189
@@ -25,7 +23,7 @@ class Command(BaseCommand):
     LTC=191
     """
 
-    def handle(self):
+    def handle(self, *args, **kwargs):
         url = "https://investing-cryptocurrency-markets.p.rapidapi.com/currencies/get-rate"
 
         headers = {

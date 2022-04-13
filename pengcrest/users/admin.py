@@ -13,13 +13,15 @@ from .models import (
     KYCVerify,
     Withdraw,
     Deposit,
-    TransactionHistory
+    TransactionHistory,
+    Addresses
 )
 
 admin.site.register(Wallet)
 admin.site.register(QuickFund)
 admin.site.register(KYCVerify)
 admin.site.register(Withdraw)
+admin.site.register(Addresses)
 admin.site.register(Deposit)
 admin.site.register(TransactionHistory)
 

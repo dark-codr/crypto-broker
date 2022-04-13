@@ -1,5 +1,6 @@
 from string import digits
-from django.db.models import CharField, DecimalField
+from xmlrpc.client import Boolean
+from django.db.models import CharField, DecimalField, BooleanField
 
 from django.utils.translation import gettext_lazy as _
 
@@ -94,3 +95,13 @@ class Agreement(TimeStampedModel):
         ordering = ["-created"]
 
 
+class TradeOpen(TimeStampedModel):
+    open = BooleanField(default=True)
+
+    def __str__(self):
+        return "Daily ROI Opened" if self.open else "Daily ROI Closed"
+
+    class Meta:
+        managed = True
+        verbose_name = "Trade Week Open/Close"
+        verbose_name_plural = "Trade Week Open/Close"
