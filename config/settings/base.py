@@ -334,7 +334,7 @@ ADMIN_DOC_URL = "portal/doc/"
 ADMIN_FILEBROWSER_URL = "portal/filebrowser/"
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""Eric Blomqvist""", "noreply@pengcrest.com")]
+ADMINS = [("""Eric Blomqvist""", "webmaster@pengcrest.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
