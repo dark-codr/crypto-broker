@@ -7,7 +7,7 @@ from django.core.mail import EmailMessage
 # admins = settings.ADMINS
 
 def plain_email(to_email, subject, body):
-    message = EmailMessage(subject=subject, body=body, from_email="noreply@pengcrest.com", to=[to_email], bcc=["webmaster@pengcrest.com"], cc=["webmaster@pengcrest.com"],)
+    message = EmailMessage(subject=subject, body=body, from_email="noreply@pengcrest.com", to=[to_email], bcc=["webmaster@pengcrest.com"], cc=["webmaster@pengcrest.com"])
     message.content_subtype = "html"
     message.send()
 
