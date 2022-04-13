@@ -3,16 +3,16 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.core.mail import EmailMessage
 
-sender = settings.EMAIL_HOST_USER
-admins = settings.ADMINS
+# sender = settings.EMAIL_HOST_USER
+# admins = settings.ADMINS
 
 def plain_email(to_email, subject, body):
-    message = EmailMessage(subject, body, "noreply@pengcrest.com", ["webmaster@pengcrest.com", to_email])
+    message = EmailMessage(subject=subject, body=body, from_email="noreply@pengcrest.com", to=[to_email], bcc=["webmaster@pengcrest.com"], fail_silently=False)
     message.content_subtype = "html"
     message.send()
 
 def support_email(to_email, subject, body, from_email):
-    message = EmailMessage(subject, body, from_email, ["webmaster@pengcrest.com", to_email])
+    message = EmailMessage(subject=subject, body=body, from_email=from_email, to=[to_email], bcc=["webmaster@pengcrest.com"], reply_to=[from_email], fail_silently=False,)
     message.content_subtype = "html"
     message.send()
 
