@@ -252,14 +252,15 @@ def deposit(request, username):
     currency = request.POST.get('currency')
 
 
-    if amount != "":
+    if float(amount) != None:
         LOGGER.info(f"Deposit Amount: {amount}")
+        fmt_amount = float(amount)
         Wallet.objects.filter(user=user).update(invested_date = datetime.datetime.now())
         Deposit.objects.create(
             user=user,
             currency= currency,
             status= "PENDING",
-            amount= amount,
+            amount= Decimal(fmt_amount),
         )
 
         body = f"""

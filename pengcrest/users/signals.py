@@ -114,7 +114,10 @@ def deposit_approve_signal(instance, *args, **kwargs):
     if instance.user.first_investment:
         two_percent = instance.amount * Decimal(0.02)
         referrer = User.objects.get(username=instance.user.recommended_by.username)
-        profit = referrer.bonus + two_percent
+        if referrer.bonus < 1.00:
+            profit = 0.00 + two_percent
+        else:
+            profit = referrer.bonus + two_percent
         User.objects.filter(username=instance.user.recommended_by.username).update(bonus=profit)
         TransactionHistory.objects.create(
             user=referrer,
