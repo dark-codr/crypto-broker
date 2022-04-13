@@ -93,20 +93,20 @@ AFFILIATE PROGRAM {{ block.super }}
   <h3 class="text-2xl md:text-6xl font-black">Getting Started? It's Simple</h3>
   <p class="text-sm text-light/50">The affiliate program is our special feature for loyal investors. Invite users and earn 2% <br>of the fee on their investment transactions!</p>
   <div class="max-w-full space-x-8 md:justify-center h-min py-4 flex items-center overflow-x-scroll scrollbar-hide">
-    <div class="flex-col flex-none w-[320px] rounded-xl h-min py-6 px-10 bg-primary/20 text-center">
+    <a href="{% url 'account_signup' %}" class="flex-col flex-none w-[320px] rounded-xl h-min py-6 px-10 bg-primary/20 text-center">
       <strong class="font-black text-2xl uppercase">JOIN Program</strong>
       <span class="block">Signup for referal programs</span>
-    </div>
+    </a>
 
-    <div class="flex-col flex-none w-[320px] rounded-xl h-min py-6 px-10 bg-primary/20 text-center">
+    <a href="{% if request.user.is_authenticated %}{% url 'users:detail' request.user.username %}{% else %}{% url 'account_login' %}{% endif %}" class="flex-col flex-none w-[320px] rounded-xl h-min py-6 px-10 bg-primary/20 text-center">
       <strong class="font-black text-2xl uppercase">Promote</strong>
       <span class="block">Your Referral Link</span>
-    </div>
+    </a>
 
-    <div class="flex-col flex-none w-[320px] rounded-xl h-min py-6 px-10 bg-primary/20 text-center">
+    <a href="{% if request.user.is_authenticated %}{% url 'users:detail' request.user.username %}{% else %}{% url 'account_login' %}{% endif %}" class="flex-col flex-none w-[320px] rounded-xl h-min py-6 px-10 bg-primary/20 text-center">
       <strong class="font-black text-2xl uppercase">Earn</strong>
       <span class="block">Referral Commision</span>
-    </div>
+    </a>
   </div>
 </section>
 {% endblock content %}

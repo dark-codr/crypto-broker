@@ -12,9 +12,9 @@ INVESTMENT FOR ALL {{ block.super }}
     <h1 class="text-light text-2xl md:text-4xl">An Investment Platform for Beginners, Advisors, Crypto-<span class="font-black">Experts and Investors.</span></h1>
     <p class="text-sm text-light/40">The Decentralized Low Risk Investment Platform for Crypto Beginners, Advisors, Experts and Investors</p>
     <div class="flex items-center pt-4 space-x-6 w-full">
-      <button class="hover:scale-105 duration-200  bg-primary text-dark rounded-2xl text-sm font-black uppercase px-6 py-2">Start Earning</button>
+      <a href="{% url 'account_signup' %}" class="block md:w-2/3 hover:scale-105 duration-200  bg-primary text-dark rounded-2xl text-sm font-black uppercase px-6 py-2">Start Earning</button>
       <!-- <a href="facebook.com/"><i class="fa fa-facebook text-xl text-light hover:text-primary"></i></a> -->
-      <a href="https://t.me/+2inkZFQvgIY4ZTNk"><i class="fa fa-telegram text-xl text-light hover:text-primary"></i></a>
+      <a href="https://t.me/+2inkZFQvgIY4ZTNk"><i class="hover:scale-125 duration-200 fa fa-telegram text-xl text-light hover:text-primary"></i></a>
     </div>
   </div>
 
@@ -108,7 +108,7 @@ INVESTMENT FOR ALL {{ block.super }}
       <p class="mb-8">
         Pengcrest is the simplest way to grow your money like the worlds most sophisticated investors
       </p>
-      <button class="hover:scale-105 duration-200  mx-auto md:mx-0 bg-primary text-dark rounded-2xl text-sm font-black uppercase px-6 py-2 mt-8">Sign Up For Free</button>
+      <a href="{% url 'account_signup' %}" class="block hover:scale-105 duration-200 md:w-2/3 mx-auto md:mx-0 bg-primary text-dark rounded-2xl text-sm font-black uppercase px-6 py-2 mt-8">Sign Up For Free</a>
     </div>
   </div>
 
@@ -166,38 +166,10 @@ INVESTMENT FOR ALL {{ block.super }}
 </section>
 
 <section class="w-full text-center py-6">
-  <p class="text-4xl tracking-wide font-black">Minimum Investment Value <strong class="text-primary">$100.00</strong></p>
+  <p class="text-4xl tracking-wide font-black px-8">Minimum Investment Value <strong class="text-primary">$100.00</strong></p>
 </section>
 
-<div id="exh" class="w-screen h-min" hx-get="{% url 'home' %}" hx-trigger="every 604800s">
+<div id="exh" class="w-screen h-min">
   {% include "snippets/crypto_price.html" %}
 </div>
 {% endblock content %}
-
-
-{% comment %}
-<script>
-  /* Project specific Javascript goes here. */
-  btc_res = document.getElementById("#min_btc_res")
-  eth_res = document.getElementById("#min_eth_res")
-  ltc_res = document.getElementById("#min_ltc_res")
-  doge_res = document.getElementById("#min_doge_res")
-
-  const eth_api_url = 'https://api.cryptonator.com/api/ticker/eth-usd';
-  const btc_api_url = 'https://api.cryptonator.com/api/ticker/btc-usd';
-  const ltc_api_url = 'https://api.cryptonator.com/api/ticker/ltc-usd';
-  const doge_api_url = 'https://api.cryptonator.com/api/ticker/doge-usd';
-
-  async function fetchETH() {
-      const res = await fetch(eth_api_url);
-      const data = await res.json();
-      console.log(data.ticker.price)
-      return data.ticker.price
-  }
-
-  fetchETH().then(price => {
-      eth_res.innerHTML = 100 / price;
-  }, console.error);
-
-</script>
-{% endcomment %}

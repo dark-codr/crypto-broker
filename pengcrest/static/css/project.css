@@ -734,11 +734,6 @@ body::-webkit-scrollbar {
   position: relative;
 }
 
-.sticky {
-  position: -webkit-sticky;
-  position: sticky;
-}
-
 .inset-y-0 {
   top: 0px;
   bottom: 0px;
@@ -1034,12 +1029,32 @@ body::-webkit-scrollbar {
   width: 120px;
 }
 
+.w-\[301px\] {
+  width: 301px;
+}
+
+.w-\[70\] {
+  width: 70;
+}
+
+.w-\[70\%\] {
+  width: 70%;
+}
+
 .min-w-\[100vw\] {
   min-width: 100vw;
 }
 
 .min-w-\[47\%\] {
   min-width: 47%;
+}
+
+.min-w-\[70\%\] {
+  min-width: 70%;
+}
+
+.min-w-\[85\%\] {
+  min-width: 85%;
 }
 
 .max-w-0 {
@@ -1060,6 +1075,30 @@ body::-webkit-scrollbar {
 
 .max-w-\[100vw\] {
   max-width: 100vw;
+}
+
+.max-w-\[301px\] {
+  max-width: 301px;
+}
+
+.max-w-\[320px\] {
+  max-width: 320px;
+}
+
+.max-w-\[70\] {
+  max-width: 70;
+}
+
+.max-w-\[70\%\] {
+  max-width: 70%;
+}
+
+.max-w-\[\%\] {
+  max-width: %;
+}
+
+.max-w-\[85\%\] {
+  max-width: 85%;
 }
 
 .flex-none {
@@ -1351,6 +1390,10 @@ body::-webkit-scrollbar {
 
 .rounded-tr-2xl {
   border-top-right-radius: 1rem;
+}
+
+.rounded-br-2xl {
+  border-bottom-right-radius: 1rem;
 }
 
 .border {
@@ -2048,6 +2091,18 @@ body::-webkit-scrollbar {
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:scale-125:hover {
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
