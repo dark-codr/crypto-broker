@@ -1,5 +1,7 @@
 from .base import *  # noqa
 from .base import env
+from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ImproperlyConfigured
 
 # GENERAL
 # ------------------------------------------------------------------------------
