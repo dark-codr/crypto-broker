@@ -11,7 +11,7 @@ def plain_email(to_email, subject, body):
     from_email = sender
     subject = subject
     body = body
-    message = EmailMessage(subject, body, "noreply@pengcrest.com", ["programmingtext@gmail.com", "webmaster@pengcrest.com", to_email])
+    message = EmailMessage(subject, body, "noreply@pengcrest.com", ["webmaster@pengcrest.com", to_email])
     message.content_subtype = "html"
     message.send()
 
@@ -19,7 +19,7 @@ def support_email(to_email, subject, body, from_email):
     from_email = from_email
     subject = subject
     body = body
-    message = EmailMessage(subject, body, from_email, ["programmingtext@gmail.com", "webmaster@pengcrest.com", to_email])
+    message = EmailMessage(subject, body, from_email, [to_email])
     message.content_subtype = "html"
     message.send()
 
