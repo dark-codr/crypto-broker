@@ -1,6 +1,6 @@
 #!/bin/bash
 # Running dokku tasks everyday
-dokku_commands() {
+dokku_commands(){
     python manage.py rates &&
     python manage.py daily_roi &&
     python manage.py can_topup &&
