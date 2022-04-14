@@ -130,7 +130,7 @@ def deposit_approve_signal(instance, *args, **kwargs):
                 amount= two_percent,
             )
 
-        User.objects.filter(username=instance.user.username).update(has_invested = True, can_withdraw=False, first_investment=False)
+    User.objects.filter(username=instance.user.username).update(has_invested = True, can_withdraw=False, first_investment=False)
 
 
     if instance.status == Deposit.SUCCESS:
