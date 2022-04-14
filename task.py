@@ -40,8 +40,8 @@ def run_commands():
     python manage.py can_withdraw""", shell=True)
     print("scripts ran with status code: %d" % dokku_commands)
 
-# schedule.every(1).day.at("01:15").do(run_commands) # run commands every day at 3:30 am
-schedule.every(1).seconds.do(run_commands) # run commands every day at 3:30 am
+schedule.every(1).day.at("01:15").do(run_commands) # run commands every day at 3:30 am
+# schedule.every(1).seconds.do(run_commands) # run commands every day at 3:30 am
 
 # # Start the background thread
 # stop_run_continuously = run_continuously()
@@ -54,4 +54,4 @@ schedule.every(1).seconds.do(run_commands) # run commands every day at 3:30 am
 
 while True:
     schedule.run_pending()
-    time.sleep(14400)
+    time.sleep(86400)
