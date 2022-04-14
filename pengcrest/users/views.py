@@ -255,6 +255,7 @@ def deposit(request, username):
     if int(amount) != None and int(amount) >= 100:
         LOGGER.info(f"Deposit Amount: {amount}")
         fmt_amount = int(amount)
+        User.objects.filter(username=user.username).update(has_invested = True)
         Wallet.objects.filter(user=user).update(invested_date = datetime.datetime.now())
         Deposit.objects.create(
             user=user,

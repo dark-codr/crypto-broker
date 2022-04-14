@@ -103,6 +103,7 @@ def withdraw_approve_signal(instance, *args, **kwargs):
 def deposit_approve_signal(instance, *args, **kwargs):
     User.objects.filter(username=instance.user.username, can_withdraw=True).update(can_withdraw=False)
     if instance.status == Withdraw.FAILED:
+        User.objects.filter(username=instance.user.username, first_investment=True).update(has_invested = False, can_withdraw=False, first_investment=False)
         TransactionHistory.objects.create(
             user=instance.user,
             currency= instance.currency,
@@ -112,6 +113,7 @@ def deposit_approve_signal(instance, *args, **kwargs):
         )
 
     if instance.user.first_investment:
+        User.objects.filter(username=instance.user.username, first_investment=True).update(has_invested = True, can_withdraw=False, first_investment=False)
         two_percent = instance.amount * Decimal(0.02)
         referrer = User.objects.filter(username=instance.user.recommended_by).exists()
         LOGGER.info(referrer)
@@ -130,10 +132,10 @@ def deposit_approve_signal(instance, *args, **kwargs):
                 amount= two_percent,
             )
 
-    User.objects.filter(username=instance.user.username).update(has_invested = True, can_withdraw=False, first_investment=False)
 
 
     if instance.status == Deposit.SUCCESS:
+        User.objects.filter(username=instance.user.username).update(has_invested = True, can_withdraw=False, first_investment=False)
         TransactionHistory.objects.create(
             user=instance.user,
             currency= instance.currency,
