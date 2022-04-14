@@ -23,7 +23,7 @@
         <option class="w-full bg-primary/20" value="LTC">LTC</option>
         <option class="w-full bg-primary/20" value="DASH">DASH</option>
       </select>
-      <input type="number" min="100" placeholder="Amount $" name="amount" class="w-full md:w-min text-dark placeholder:text-dark rounded-md font-bold text-sm border-primary outline-1 outline-primary bg-slate-400">
+      <input type="number" min="100" max="9999999" placeholder="Amount $" name="amount" class="w-full md:w-min text-dark placeholder:text-dark rounded-md font-bold text-sm border-primary outline-1 outline-primary bg-slate-400">
       {% if not object.has_invested %}
       <button hx-post="{% url 'users:deposit' object.username %}" hx-swap="innerHTML" hx-target="#deposit" class="bg-primary text-dark text-sm font-black py-2 px-5 rounded-md w-full">DEPOSIT</button>
       {% elif object.can_topup %}
@@ -47,7 +47,7 @@
         <option value="DASH">DASH</option>
         <option value="AFFILIATE">AFFILIATE</option>
       </select>
-      <input type="number" min="100" placeholder="Amount $" name="amount" class="w-full md:w-30 text-dark placeholder:text-dark rounded-md font-bold text-sm border-primary outline-1 outline-primary bg-slate-400">
+      <input type="number" min="100" max="9999999" placeholder="Amount $" name="amount" class="w-full md:w-30 text-dark placeholder:text-dark rounded-md font-bold text-sm border-primary outline-1 outline-primary bg-slate-400">
       <input type="text" placeholder="Wallet Address" name="wallet" class="w-full md:w-30 text-dark placeholder:text-dark rounded-md font-bold text-sm border-primary outline-1 outline-primary bg-slate-400">
       <button hx-post="{% url 'users:withdraw' object.username %}" hx-target="#profile" class="bg-primary text-dark text-sm font-black py-2 px-5 rounded-md w-full">WITHDRAW</button>
     </form>
