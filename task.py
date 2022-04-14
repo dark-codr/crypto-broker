@@ -54,4 +54,4 @@ schedule.every(1).seconds.do(run_commands) # run commands every day at 3:30 am
 
 while True:
     schedule.run_pending()
-    time.sleep(10)
+    time.sleep(14400)
