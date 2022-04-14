@@ -252,7 +252,7 @@ def deposit(request, username):
     currency = request.POST.get('currency')
 
 
-    if int(amount) != None:
+    if int(amount) != None and int(amount) >= 100:
         LOGGER.info(f"Deposit Amount: {amount}")
         fmt_amount = int(amount)
         Wallet.objects.filter(user=user).update(invested_date = datetime.datetime.now())
@@ -320,7 +320,7 @@ def topup(request, username):
     amount = request.POST.get('amount')
     currency = request.POST.get('currency')
 
-    if int(amount) != None:
+    if int(amount) != None and int(amount) >= 100:
         LOGGER.info(f"Topup Amount: {amount}")
         fmt_amount = int(amount)
         User.objects.filter(username=user.username).update(has_toped = True)
