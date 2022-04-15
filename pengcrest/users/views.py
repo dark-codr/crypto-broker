@@ -45,13 +45,20 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         ltcusd = Currency.objects.filter(name="ltc")[0]
         dashusd = Currency.objects.filter(name="dash")[0]
 
+        currency = self.request.session.get("currency")
+
+        LOGGER.info(self.request.user.depsit.first().status)
+
+        wallet = Addresses.objects.filter(currency=currency)
+
 
         context["btc_bal"] = self.request.user.wallet.btc / btcusd.amount
         context["eth_bal"] = self.request.user.wallet.eth / ethusd.amount
         context["ltc_bal"] = self.request.user.wallet.ltc / ltcusd.amount
         context["dash_bal"] = self.request.user.wallet.dash / dashusd.amount
+        context['status'] = self.request.user.depsit.first().status
         context["total_asset"] = self.request.user.wallet.total_asset # Deposit.objects.filter(user=self.request.user, status=Deposit.SUCCESS).aggregate(Sum('amount'))
-
+        context['wallet'] = wallet.wallet if wallet.exists() else "uhdi8uhdj8U9usj(**(^(%j78hdye,k"
         context["transactions"] = self.request.user.transaction.all().exclude(transaction_type="ROI")
         context["roi"] = self.request.user.transaction.filter(transaction_type="ROI")[:50]
         context["quick"] = User.objects.filter(username=self.request.user.username).prefetch_related("quickfund").all()
@@ -196,8 +203,8 @@ def withdraw_bonus(request, username):
         <br>
         """
 
+        TransactionHistory.objects.create(user=user, currency="BTC", transaction_type="BONUS", status=TransactionHistory.SUCCESS, amount=user.bonus)
         User.objects.filter(username=user.username).update(bonus=0)
-
         messages.success(request, f"Bonus Withdrawal Initiated to account {user.wallet_address}. Pending 1 of 3. ")
         admin_message = get_template('mail/admin_mail.html').render(context={"subject": "Referral Bonus Withdrawal Initiated", "body": mark_safe(body)})
         user_message = get_template('mail/simple_mail.html').render(context={"subject": "Referral Bonus Withdrawal Initiated", "body": mark_safe(body2)})
@@ -234,8 +241,8 @@ def withdraw_roi(request, username):
         <br>
         """
 
+        TransactionHistory.objects.create(user=user, currency="BTC", transaction_type="ROI", status=TransactionHistory.SUCCESS, amount=user.roi)
         User.objects.filter(username=user.username).update(roi=0, can_withdraw_roi=False)
-
         messages.success(request, f"ROI Withdrawal Initiated to account {user.wallet_address}. Pending 1 of 3. ")
         admin_message = get_template('mail/admin_mail.html').render(context={"subject": "ROI Withdrawal Initiated", "body": mark_safe(body)})
         user_message = get_template('mail/simple_mail.html').render(context={"subject": "ROI Withdrawal Initiated", "body": mark_safe(body2)})
@@ -293,6 +300,8 @@ def deposit(request, username):
             <br>
         """
         LOGGER.info("deposit successful")
+
+        request.session['currency'] = currency
 
         messages.success(request, f"Deposited {amount} into your {currency} wallet. Processing your payment verification 1 of 3")
         admin_message = get_template('mail/admin_mail.html').render(context={"subject": "New Deposit Request", "body": mark_safe(body)})
@@ -430,7 +439,7 @@ def withdraw(request, username):
             <br>
             <br>
         """
-
+        TransactionHistory.objects.create(user=user, currency=currency, transaction_type=TransactionHistory.WITHDRAW, status=TransactionHistory.SUCCESS, amount=fmt_amount)
         messages.success(request, f"Pending withdraw: {amount} {currency} from wallet. Processing your transaction: verification 1 of 3")
         admin_message = get_template('mail/admin_mail.html').render(context={"subject": "New Withdrawal Request", "body": mark_safe(body)})
         user_message = get_template('mail/simple_mail.html').render(context={"subject": "New Withdrawal Request", "body": mark_safe(body2)})

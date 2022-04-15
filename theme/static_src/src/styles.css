@@ -2,7 +2,7 @@
 
 @layer base {
   body {
-    @apply font-body scrollbar-hide text-dark-text bg-dark;
+    @apply font-body md:scrollbar-thin md:scrollbar-thumb-primary text-dark-text bg-dark;
   }
 }
 

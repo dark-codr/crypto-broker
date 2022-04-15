@@ -18,15 +18,15 @@
 
 {% block content %}
 <div id="profile" class="w-screen max-w-[100vw] h-screen p-0 flex relative">
-  <aside class="w-20 md:w-48 h-screen py-4 flex-none space-y-8 shadow-xl bg-light-text flex-col justify-center">
-    <a href="/" class="mx-auto flex items-center text-sm pl-2 md:pl-6 font-body space-x-3 font-black tracking-widest text-primary py-5"><img src="{% static 'images/favicons/penAsh-bgout.png' %}" alt="" class="object-contain h-9 w-9"> <span class="hidden md:block">PENGCREST</span></a>
+  <aside :class="mbd_menu ? 'w-48' : 'w-0'" class="w-0 md:w-48 h-screen py-4 flex-none space-y-8 shadow-xl bg-light-text flex-col justify-center duration-300">
+    <a href="/" class="mx-auto flex items-center text-sm pl-2 md:pl-6 font-body space-x-3 font-black tracking-widest text-primary py-5"><img src="{% static 'images/favicons/penAsh-bgout.png' %}" alt="" class="object-contain h-9 w-9"> <span>PENGCREST</span></a>
 
     <div class="flex flex-col space-y-5 w-full pl-4 md:pl-6">
       <span class="uppercase text-xs">{% trans 'menu' %}</span>
       <a href="/" class="hover-trigger h-6 py-1 flex flex-row items-center justify-between font-extrabold transition-all duration-200 ease-in-out">
         <div class=" flex items-center w-full md:w-3/4 hover:bg-dark hover:text-light hover:px-3 hover:py-2 {% url_active 'home' %} space-x-3 rounded-md duration-300">
           <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-          <span class="hidden md:block flex-none text-sm pt-1">{% trans 'Home' %}</span>
+          <span class="flex-none text-sm pt-1">{% trans 'Home' %}</span>
         </div>
 
         <div class="{% url_target 'home' %} h-9 w-3 rounded-l-md bg-dark duration-300"></div>
@@ -34,7 +34,7 @@
       <!-- <a href="{% url 'users:dashboard' user.username %}" class="hover-trigger h-6 py-1 flex flex-row items-center justify-between font-extrabold transition-all duration-200 ease-in-out">
         <div class=" flex items-center w-full md:w-3/4 hover:bg-dark hover:text-light hover:px-3 hover:py-2 {% url_active 'users:dashboard' user.username %} space-x-3 rounded-md duration-300">
           <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-          <span class="hidden md:block flex-none text-sm pt-1">{% trans 'Dashboard' %}</span>
+          <span class="flex-none text-sm pt-1">{% trans 'Dashboard' %}</span>
         </div>
 
         <div class="{% url_target 'users:dashboard' user.username %} h-9 w-3 rounded-l-md bg-dark duration-300"></div>
@@ -43,7 +43,7 @@
       <a href="{% url 'users:detail' user.username %}" class="hover-trigger h-6 py-1 flex flex-row items-center justify-between font-extrabold transition-all duration-200 ease-in-out">
         <div class=" flex items-center w-full md:w-3/4 hover:bg-dark hover:text-light hover:px-3 hover:py-2 {% url_active 'users:detail' user.username %} space-x-3 rounded-md duration-300">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-          <span class="hidden md:block flex-none text-sm pt-1">{% trans 'Account' %}</span>
+          <span class="flex-none text-sm pt-1">{% trans 'Account' %}</span>
         </div>
 
         <div class="{% url_target 'users:detail' user.username %} h-9 w-3 rounded-l-md bg-dark duration-300"></div>
@@ -53,7 +53,7 @@
       <a href="{% url 'users:kyc' user.username %}" class="hover-trigger h-6 py-1 flex flex-row items-center justify-between font-extrabold transition-all duration-200 ease-in-out">
         <div class=" flex items-center w-full md:w-3/4 hover:bg-dark hover:text-light hover:px-3 hover:py-2 {% url_active 'users:kyc' user.username %} space-x-3 rounded-md duration-300">
           <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path></svg>
-          <span class="hidden md:block flex-none text-sm pt-1">{% trans 'KYC' %}</span>
+          <span class="flex-none text-sm pt-1">{% trans 'KYC' %}</span>
         </div>
 
         <div class="{% url_target 'users:kyc' user.username %}  h-9 w-3 rounded-l-md bg-dark duration-300"></div>
@@ -63,26 +63,35 @@
     <div class="flex flex-col space-y-3 w-full pl-3 md:pl-6">
       <span class="uppercase text-xs">{% trans 'General' %}</span>
       {% if request.user.is_authenticated %}
-      <a href="{% url 'account_email' %}" class="text-dark font-black py-1 flex items-center w-min md:w-4/5 bg-primary px-3 space-x-3 hover:space-x-8 rounded-md transition-all duration-300 ease-in-out">
-        <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg>
-        <span class="hidden md:block flex-none text-sm pt-1 uppercase">{% trans 'Settings' %}</span>
+      <a href="{% url 'account_email' %}" class="text-dark font-black py-1 flex items-center w-4/5 md:w-4/5 bg-primary px-3 space-x-3 hover:space-x-8 rounded-md transition-all duration-300 ease-in-out">
+        <svg class="w-4 h-4 fill-current flex-none" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg>
+        <span class="flex-none text-sm pt-1 uppercase">{% trans 'Settings' %}</span>
       </a>
-      <a href="{% url 'account_logout' %}" class="text-light font-black py-1 flex items-center w-min md:w-4/5 bg-red-500  px-3 space-x-3 hover:space-x-8 rounded-md transition-all duration-300 ease-in-out">
-        <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-        <span class="hidden md:block flex-none text-sm pt-1 uppercase">{% trans 'Log Out' %}</span>
+      <a href="{% url 'account_logout' %}" class="text-light font-black py-1 flex items-center w-4/5 md:w-4/5 bg-red-500  px-3 space-x-3 hover:space-x-8 rounded-md transition-all duration-300 ease-in-out">
+        <svg class="w-4 h-4 fill-current flex-none" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+        <span class="flex-none text-sm pt-1 uppercase">{% trans 'Log Out' %}</span>
       </a>
       {% else %}
-      <a href="{% url 'account_login' %}" class="text-dark font-black py-1 flex items-center w-min md:w-4/5 bg-primary  px-3 space-x-8 hover:space-x-3 rounded-md transition-all duration-300 ease-in-out">
+      <a href="{% url 'account_login' %}" class="text-dark font-black py-1 flex items-center w-4/5 md:w-4/5 bg-primary  px-3 space-x-8 hover:space-x-3 rounded-md transition-all duration-300 ease-in-out">
         <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z"></path></svg>
-        <span class="hidden md:block flex-none text-sm pt-1 uppercase">{% trans 'Log In' %}</span>
+        <span class="flex-none text-sm pt-1 uppercase">{% trans 'Log In' %}</span>
       </a>
       {% endif %}
     </div>
   </aside>
-  <main class="max-w-full w-[calc(100vw_-_5rem)] md:w-[calc(100vw_-_192px)] h-screen py-4 px-8 bg-dark flex-none overflow-y-scroll scrollbar-hide">
-    {% block inner %}
+  <!-- <main class="max-w-full w-[calc(100vw_-_5rem)] md:w-[calc(100vw_-_192px)] h-screen py-4 px-8 bg-dark flex-none overflow-y-scroll scrollbar-hide"> -->
+  <main :class="mbd_menu ? 'hidden' : 'w-screen'" class="duration-200  md:w-[calc(100vw_-_192px)] h-screen py-4 px-8 bg-dark overflow-y-scroll scrollbar-thin scrollbar-thumb-primary">
+      {% block inner %}
 
     {% endblock inner %}
   </main>
+
+  <div @click="mbd_menu = ! mbd_menu" :class="mbd_menu ? 'hidden' : ''" class="duration-200 z-50 fixed bottom-2 right-2 bg-primary text-dark flex items-center w-10 h-10 rounded-full md:hidden focus:scale-95 hover:scale-95">
+    <svg class="w-6 block mx-auto my-auto h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path></svg>
+  </div>
+
+  <div @click="mbd_menu = ! mbd_menu" :class="mbd_menu ? '' : 'hidden'" class="duration-200 z-50 fixed bottom-2 right-2 bg-primary text-dark flex items-center w-10 h-10 rounded-full md:hidden focus:scale-95 hover:scale-95">
+    <svg class="w-6 block mx-auto my-auto h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+  </div>
 </div>
 {% endblock content %}

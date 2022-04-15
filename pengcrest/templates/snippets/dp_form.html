@@ -1,0 +1,14 @@
+<form class="rounded-xl text-dark bg-light-text w-full h-min text-center md:flex md:items-center md:space-x-4 md:space-y-0 space-y-4">
+  <select name="currency" id="currency" class="form-select w-full md:w-min rounded-md font-bold text-sm border-primary outline-1 outline-primary bg-slate-400">
+    <option class="w-full bg-primary/20" value="BTC">BTC</option>
+    <option class="w-full bg-primary/20" value="ETH">ETH</option>
+    <option class="w-full bg-primary/20" value="LTC">LTC</option>
+    <option class="w-full bg-primary/20" value="DASH">DASH</option>
+  </select>
+  <input type="number" min="100" max="9999999" placeholder="Amount $" name="amount" class="w-full md:w-min text-dark placeholder:text-dark rounded-md font-bold text-sm border-primary outline-1 outline-primary bg-slate-400">
+  {% if not object.has_invested %}
+  <button hx-post="{% url 'users:deposit' object.username %}" hx-swap="innerHTML" hx-target="#deposit" class="bg-primary text-dark text-sm font-black py-2 px-5 rounded-md w-full">DEPOSIT</button>
+  {% elif object.can_topup %}
+  <button hx-post="{% url 'users:topup' object.username %}" class="bg-primary text-dark text-sm font-black py-2 px-5 rounded-md w-full">TOP UP</button>
+  {% endif %}
+</form>

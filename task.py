@@ -30,7 +30,6 @@ from subprocess import check_call
 
 
 def run_commands():
-    # dokku_commands = os.system("dokku run pengcrest python manage.py rates && dokku run pengcrest python manage.py daily_roi && dokku run pengcrest python manage.py can_topup && dokku run pengcrest python manage.py can_withdraw_roi && dokku run pengcrest python manage.py can_reinvest && dokku run pengcrest python manage.py can_withdraw")
     dokku_commands = check_call(r"""
     python manage.py rates
     python manage.py daily_roi
@@ -54,4 +53,4 @@ schedule.every(1).day.at("01:15").do(run_commands) # run commands every day at 3
 
 while True:
     schedule.run_pending()
-    time.sleep(86400)
+    time.sleep(10)
