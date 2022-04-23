@@ -495,16 +495,16 @@ KEEP_COMMENTS_ON_MINIFYING = True
 # GEOIP_PATH = str(ROOT_DIR / "geoip")
 
 
-CRONJOBS = [
-    ('@daily', 'pengcrest.users.cron.daily_roi'), #every 5 mins interval
-    ('@monthly', 'pengcrest.users.cron.can_topup'), # every 1 month
-    ('* 1 30 */3 *', 'pengcrest.users.cron.can_reinvest'), # every 3 months
-    ('* 1 30 */3 *', 'pengcrest.users.cron.can_withdraw'), # every 3 Months
-    ('* * 1,15 * *', 'pengcrest.users.cron.can_withdraw_roi'), # every 2 weeks
-    ('0 4 1,15 * *', 'django.core.management.call_command', ['clearsessions']), #clear seeions every 4 o'clock
-    ('@daily', 'pengcrest.mode.cron.get_crypto_prices'), #every 12:00 and 24:00
-]
-CRONTAB_LOCK_JOBS = False
+# CRONJOBS = [
+#     ('@daily', 'pengcrest.users.cron.daily_roi'), #every 5 mins interval
+#     ('@monthly', 'pengcrest.users.cron.can_topup'), # every 1 month
+#     ('* 1 30 */3 *', 'pengcrest.users.cron.can_reinvest'), # every 3 months
+#     ('* 1 30 */3 *', 'pengcrest.users.cron.can_withdraw'), # every 3 Months
+#     ('* * 1,15 * *', 'pengcrest.users.cron.can_withdraw_roi'), # every 2 weeks
+#     ('0 4 1,15 * *', 'django.core.management.call_command', ['clearsessions']), #clear seeions every 4 o'clock
+#     ('@daily', 'pengcrest.mode.cron.get_crypto_prices'), #every 12:00 and 24:00
+# ]
+# # CRONTAB_LOCK_JOBS = False
 # CRONTAB_EXECUTABLE = '/usr/bin/crontab'
 # CRONTAB_COMMAND_SUFFIX = '2>&1'
 

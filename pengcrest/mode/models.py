@@ -1,5 +1,3 @@
-from string import digits
-from xmlrpc.client import Boolean
 from django.db.models import CharField, DecimalField, BooleanField
 
 from django.utils.translation import gettext_lazy as _
